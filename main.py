@@ -114,9 +114,7 @@ def Marzban(url3):
                            verify=False) as response:
 
           if response.json().get("access_token"):
-            print(
-                f"{colors.GREY}=> {colors.RESET} {colors.LGREEN} successful : {url3}|{User}|{Pass} {colors.RESET} {colors.LGREEN} "
-            )
+            #print(f"{colors.GREY}=> {colors.RESET} {colors.LGREEN} successful : {url3}|{User}|{Pass} {colors.RESET} {colors.LGREEN} ")
             Good.write(f"{url3}|{User}|{Pass}")
             Good.flush()
             good += 1
@@ -126,7 +124,7 @@ def Marzban(url3):
           elif "Incorrect" in response.json().get("detail").strip():
             #print(f"{colors.GREY}=> {colors.RESET}  {colors.LRED} failed :{url{colors.RESET}")
             fail += 1
-            display()
+            #display()
             continue
           else:
             #print(f"{colors.GREY}=> {colors.RESET} {colors.LPURPLE} Exeption occured : {url3} {response.text} {colors.RESET} ")
@@ -157,7 +155,7 @@ def Marzban(url3):
       #display()
       Bad.write(url3)
       Bad.flush()  
-    display()
+    #display()
 def main():
   Worker = input("please enter Worker : ")
   with concurrent.futures.ThreadPoolExecutor(
