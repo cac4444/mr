@@ -41,7 +41,7 @@ fail = 0
 
 ti = datetime.now()
 def display():
-  os.system('clear')
+  #os.system('clear')
   print(ti)
   print(f"{colors.LYELLOW} total         =>  {total} {colors.RESET}")
   print(f"{colors.LBLUE} timeout       =>  {timeout} {colors.RESET}")
@@ -147,7 +147,7 @@ def Marzban(url3):
         #display()
         isnt_finished = True
         exception.write(f"{url3}=======>{e}\n")
-        #print(f"{colors.GREY} => {colors.RESET} {colors.LPURPLE} Exception :  {url3} {colors.RESET}")
+        print(f"{colors.GREY} => {colors.RESET} {colors.LPURPLE} Exception :  {url3} {colors.RESET}")
         break
         
   finally:
