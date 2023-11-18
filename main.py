@@ -15,7 +15,7 @@ with open(auth, "r") as credentials:
   credential = credentials.read().splitlines()
 
 Good = open("Good.txt", "a")
-Bad = open("Bad.txt", "a")
+Bad = open("Bad.txt", "w")
 Time_out = open("Time_out.txt", "w")
 exception = open("Exception.txt", "w")
 
@@ -142,11 +142,11 @@ def Marzban(url3):
         #display()
         break
 
-      except Exception:
+      except Exception as e:
         execption += 1
         #display()
         isnt_finished = True
-        exception.write(url3)
+        exception.write(f"{url3}=======>{e}\n")
         #print(f"{colors.GREY} => {colors.RESET} {colors.LPURPLE} Exception :  {url3} {colors.RESET}")
         break
         
