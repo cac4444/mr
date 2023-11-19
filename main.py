@@ -80,9 +80,9 @@ def Marzban(url3):
   try:
     for i in credential:
       try:
-
-        User = i.split("|")[0].strip()
-        Pass = i.split("|")[1].strip()
+        Auth= i.split("|")
+        User = [ Auth[0] if Auth[0] else continue ]
+        Pass = [ Auth[1] if Auth[1] else continue ]
         # Text data
         text_data = {
             'username': User,
