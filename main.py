@@ -2,7 +2,6 @@ import concurrent.futures
 import os
 import requests
 from requests.exceptions import Timeout
-from flask import Flask
 import time
 import urllib3
 from datetime import datetime
