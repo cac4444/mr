@@ -75,7 +75,7 @@ def Marzban(url3):
   total += 1
   #display()
   #print(f"{colors.GREY}=> {colors.RESET} {colors.LYELLOW} {url3}")
-  url4 = f'https://{url3}/api/admin/token'.strip()
+  url4 = f'https://{url3.strip()}/api/admin/token'.strip()
   isnt_finished = False
   try:
     for i in credential:
